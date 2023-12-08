@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class ScoreServlet extends  HttpServlet {
 
     private String message;
+    private  Double sum;
 
     public void init() {
         message = "This is an attempt to make a calculator! ";
@@ -19,10 +20,10 @@ public class ScoreServlet extends  HttpServlet {
 
 
         public void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException {
-            int sum = 0;
-            try {
-                int num1 = Integer.parseInt(request.getParameter("num1"));
-                int num2 = Integer.parseInt(request.getParameter("num2"));
+
+
+                Double num1 = Double.valueOf(request.getParameter("num1"));
+                Double num2 = Double.valueOf(request.getParameter("num2"));
 
 
                 String action = request.getParameter("op") ;
@@ -44,10 +45,7 @@ public class ScoreServlet extends  HttpServlet {
                         break;
                 }
 
-            } catch (NumberFormatException e) {
-                throw new RuntimeException(e);
 
-            }
 
 
             PrintWriter out = response.getWriter();
@@ -58,6 +56,3 @@ public class ScoreServlet extends  HttpServlet {
         }
     }
 
-
-
-    //
